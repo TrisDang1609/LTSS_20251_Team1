@@ -265,29 +265,6 @@ void compute_keypoint_descriptor(Keypoint& kp, float theta, const ScaleSpacePyra
     hists_to_vec(histograms, kp.descriptor);
 }
 
-// float euclidean_dist(std::array<uint8_t, 128>& a, std::array<uint8_t, 128>& b)
-// {
-//     float dist = 0;
-//     for (int i = 0; i < 128; i++) {
-//         int di = (int)a[i] - b[i];
-//         dist += di * di;
-//     }
-//     return std::sqrt(dist);
-// }
-
-float euclidean_dist(std::array<uint8_t, 128>& a, std::array<uint8_t, 128>& b)
-{
-    float dist = 0.0f;
-    // Báo cho trình biên dịch sử dụng thanh ghi vector (AVX/SSE)
-    // reduction(+:dist): gom tổng song song an toàn
-    #pragma omp simd reduction(+:dist)
-    for (int i = 0; i < 128; i++) {
-        float di = (float)a[i] - (float)b[i];
-        dist += di * di;
-    }
-    return std::sqrt(dist);
-}
-
 // ==========================================================================
 //  SERIAL IMPLEMENTATIONS
 // ==========================================================================
@@ -408,6 +385,17 @@ std::vector<Keypoint> find_keypoints_and_descriptors_serial(const Image& img, fl
     return kps;
 }
 
+
+float euclidean_dist_serial(std::array<uint8_t, 128>& a, std::array<uint8_t, 128>& b)
+{
+    float dist = 0;
+    for (int i = 0; i < 128; i++) {
+        int di = (int)a[i] - b[i];
+        dist += di * di;
+    }
+    return std::sqrt(dist);
+}
+
 std::vector<std::pair<int, int>> find_keypoint_matches_serial(std::vector<Keypoint>& a, std::vector<Keypoint>& b, float thresh_relative, float thresh_absolute)
 {
     assert(a.size() >= 2 && b.size() >= 2);
@@ -416,7 +404,7 @@ std::vector<std::pair<int, int>> find_keypoint_matches_serial(std::vector<Keypoi
         int nn1_idx = -1;
         float nn1_dist = 100000000, nn2_dist = 100000000;
         for (int j = 0; j < (int)b.size(); j++) {
-            float dist = euclidean_dist(a[i].descriptor, b[j].descriptor);
+            float dist = euclidean_dist_serial(a[i].descriptor, b[j].descriptor);
             if (dist < nn1_dist) {
                 nn2_dist = nn1_dist;
                 nn1_dist = dist;
@@ -598,6 +586,20 @@ std::vector<Keypoint> find_keypoints_and_descriptors_omp(const Image& img, float
     return kps;
 }
 
+
+float euclidean_dist_omp(std::array<uint8_t, 128>& a, std::array<uint8_t, 128>& b)
+{
+    float dist = 0.0f;
+    // Báo cho trình biên dịch sử dụng thanh ghi vector (AVX/SSE)
+    // reduction(+:dist): gom tổng song song an toàn
+    #pragma omp simd reduction(+:dist)
+    for (int i = 0; i < 128; i++) {
+        float di = (float)a[i] - (float)b[i];
+        dist += di * di;
+    }
+    return std::sqrt(dist);
+}
+
 std::vector<std::pair<int, int>> find_keypoint_matches_omp(std::vector<Keypoint>& a, std::vector<Keypoint>& b, float thresh_relative, float thresh_absolute)
 {
     assert(a.size() >= 2 && b.size() >= 2);
@@ -610,7 +612,7 @@ std::vector<std::pair<int, int>> find_keypoint_matches_omp(std::vector<Keypoint>
             int nn1_idx = -1;
             float nn1_dist = 100000000.0f, nn2_dist = 100000000.0f;
             for (int j = 0; j < (int)b.size(); j++) {
-                float dist = euclidean_dist(a[i].descriptor, b[j].descriptor);
+                float dist = euclidean_dist_omp(a[i].descriptor, b[j].descriptor);
                 if (dist < nn1_dist) {
                     nn2_dist = nn1_dist;
                     nn1_dist = dist;
