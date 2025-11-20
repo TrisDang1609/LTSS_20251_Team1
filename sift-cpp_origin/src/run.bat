@@ -1,0 +1,1 @@
+g++ -fopenmp main.cpp sift.cpp image.cpp -o ./sift_demo

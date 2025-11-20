@@ -1,0 +1,98 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/msys64/mingw64/share/cmake/Modules/CMakeDetermineSystem.cmake:233 (message)"
+      - "CMakeLists.txt:9 (project)"
+    message: |
+      The system is: Windows - 10.0.26100 - AMD64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/msys64/mingw64/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/msys64/mingw64/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/msys64/mingw64/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:9 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: C:/msys64/mingw64/bin/c++.exe 
+      Build flags: -O3
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.exe"
+      
+      The CXX compiler identification is GNU, found in:
+        K:/OneDrive - Trường THPT Nguyễn Gia Thiều/HUST/2025.2.LTSS/sift-cpp/build/CMakeFiles/3.28.1/CompilerIdCXX/a.exe
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/msys64/mingw64/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "C:/msys64/mingw64/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:9 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "K:/OneDrive - Tr\u01b0\u1eddng THPT Nguy\u1ec5n Gia Thi\u1ec1u/HUST/2025.2.LTSS/sift-cpp/build/CMakeFiles/CMakeScratch/TryCompile-utjk5w"
+      binary: "K:/OneDrive - Tr\u01b0\u1eddng THPT Nguy\u1ec5n Gia Thi\u1ec1u/HUST/2025.2.LTSS/sift-cpp/build/CMakeFiles/CMakeScratch/TryCompile-utjk5w"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "-O3"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+      exitCode: 1
+...
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/msys64/mingw64/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/msys64/mingw64/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/msys64/mingw64/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:9 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: C:/msys64/mingw64/bin/c++.exe 
+      Build flags: -O3
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.exe"
+      
+      The CXX compiler identification is GNU, found in:
+        K:/OneDrive - Trường THPT Nguyễn Gia Thiều/HUST/2025.2.LTSS/sift-cpp/build/CMakeFiles/3.28.1/CompilerIdCXX/a.exe
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/msys64/mingw64/share/cmake/Modules/CMakeTestCXXCompiler.cmake:49 (try_compile)"
+      - "CMakeLists.txt:9 (project)"
+    checks:
+      - "Check for working CXX compiler: C:/msys64/mingw64/bin/c++.exe"
+    directories:
+      source: "K:/OneDrive - Tr\u01b0\u1eddng THPT Nguy\u1ec5n Gia Thi\u1ec1u/HUST/2025.2.LTSS/sift-cpp/build/CMakeFiles/CMakeScratch/TryCompile-fraw54"
+      binary: "K:/OneDrive - Tr\u01b0\u1eddng THPT Nguy\u1ec5n Gia Thi\u1ec1u/HUST/2025.2.LTSS/sift-cpp/build/CMakeFiles/CMakeScratch/TryCompile-fraw54"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "-O3"
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_COMPILER_WORKS"
+      cached: true
+      stdout: |
+      exitCode: 1
+...
