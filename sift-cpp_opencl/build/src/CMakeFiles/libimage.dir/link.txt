@@ -1,0 +1,2 @@
+/usr/bin/ar qc /home/trisdang/2.Learning_Management/3.Parallel_Programming/4.OpenCL/lib/libimage_processing.a CMakeFiles/libimage.dir/image.cpp.o
+/usr/bin/ranlib /home/trisdang/2.Learning_Management/3.Parallel_Programming/4.OpenCL/lib/libimage_processing.a
