@@ -1,0 +1,101 @@
+%YAML:1.0
+
+#--------------------------------------------------------------------------------------------
+# CUDA-Optimized Webcam Configuration
+# Optimized for NVIDIA RTX 4060 GPU acceleration
+#--------------------------------------------------------------------------------------------
+File.version: "1.0"
+
+Camera.type: "PinHole"
+
+#--------------------------------------------------------------------------------------------
+# Camera Calibration Parameters
+# These are approximate values for a typical 640x480 webcam.
+# For best results, calibrate your specific camera using OpenCV calibration tools.
+# Tutorial: https://docs.opencv.org/4.x/dc/dbb/tutorial_py_calibration.html
+#--------------------------------------------------------------------------------------------
+
+# Intrinsic parameters (fx, fy, cx, cy)
+# For a typical laptop webcam at 640x480 resolution:
+# - fx, fy: focal length in pixels (typically 500-700 for laptop cameras)
+# - cx, cy: principal point (typically near image center)
+Camera1.fx: 500.0
+Camera1.fy: 500.0
+Camera1.cx: 320.0
+Camera1.cy: 240.0
+
+# Distortion parameters (k1, k2, p1, p2, k3)
+# Set to 0 if camera is pre-undistorted or distortion is minimal
+Camera1.k1: 0.0
+Camera1.k2: 0.0
+Camera1.p1: 0.0
+Camera1.p2: 0.0
+Camera1.k3: 0.0
+
+#--------------------------------------------------------------------------------------------
+# Camera Resolution and Frame Rate
+#--------------------------------------------------------------------------------------------
+
+# Camera resolution (pixels)
+# Common webcam resolutions: 640x480, 1280x720, 1920x1080
+Camera.width: 640
+Camera.height: 480
+
+# Camera frames per second
+# Higher FPS = smoother tracking, but more GPU load
+# Recommended: 30 for real-time, 60 for high-speed applications
+Camera.fps: 30
+
+# Color order of the images (0: BGR, 1: RGB)
+Camera.RGB: 1
+
+#--------------------------------------------------------------------------------------------
+# ORB Feature Extractor Parameters (CUDA-Optimized)
+#--------------------------------------------------------------------------------------------
+
+# Number of ORB features per image
+# Higher = more robust tracking, but more GPU computation
+# RTX 4060 can easily handle 1500-2000 features at 30+ FPS
+# Recommended: 1000-1500 for webcam
+ORBextractor.nFeatures: 1250
+
+# Scale factor between levels in the scale pyramid
+# 1.2 is standard, provides good balance between scale invariance and speed
+ORBextractor.scaleFactor: 1.2
+
+# Number of levels in the scale pyramid
+# More levels = better scale invariance, but more memory
+# RTX 4060 handles 8 levels efficiently
+ORBextractor.nLevels: 8
+
+# FAST threshold for feature detection
+# Lower values = more features (but potentially lower quality)
+# iniThFAST: Initial threshold (first pass)
+# minThFAST: Fallback threshold if initial yields few features
+ORBextractor.iniThFAST: 20
+ORBextractor.minThFAST: 7
+
+#--------------------------------------------------------------------------------------------
+# Viewer Parameters
+#--------------------------------------------------------------------------------------------
+
+Viewer.KeyFrameSize: 0.05
+Viewer.KeyFrameLineWidth: 1.0
+Viewer.GraphLineWidth: 0.9
+Viewer.PointSize: 2.0
+Viewer.CameraSize: 0.08
+Viewer.CameraLineWidth: 3.0
+Viewer.ViewpointX: 0.0
+Viewer.ViewpointY: -0.7
+Viewer.ViewpointZ: -1.8
+Viewer.ViewpointF: 500.0
+
+#--------------------------------------------------------------------------------------------
+# System Parameters
+#--------------------------------------------------------------------------------------------
+
+# Image scale factor for processing
+# 1.0 = full resolution, 0.5 = half resolution
+# Lower values can improve FPS at cost of accuracy
+# System.imageScale: 1.0
+

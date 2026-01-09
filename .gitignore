@@ -1,0 +1,118 @@
+# ============================================
+# ORB-SLAM3 CUDA .gitignore
+# ============================================
+
+# ==== Build Artifacts ====
+build/
+lib/
+cmake-build-*/
+cmake_modules/
+CMakeLists.txt.user
+CMakeLists_modified.txt
+
+# ==== Third-party build artifacts ====
+Thirdparty/DBoW2/build/
+Thirdparty/DBoW2/lib/
+Thirdparty/g2o/build/
+Thirdparty/g2o/lib/
+Thirdparty/g2o/config.h
+Thirdparty/Sophus/build/
+
+# ==== Vocabulary (large file) ====
+Vocabulary/ORBvoc.txt
+
+# ==== Compiled binaries ====
+# Monocular
+Examples/Monocular/mono_euroc
+Examples/Monocular/mono_kitti
+Examples/Monocular/mono_tum
+Examples/Monocular/mono_tum_vi
+Examples/Monocular/mono_webcam
+Examples/Monocular/mono_webcam_cuda
+Examples/Monocular/mono_video_cuda
+Examples/Monocular/mono_realsense_D435i
+Examples/Monocular/mono_realsense_t265
+
+# Stereo
+Examples/Stereo/stereo_euroc
+Examples/Stereo/stereo_kitti
+Examples/Stereo/stereo_tum_vi
+Examples/Stereo/stereo_realsense_t265
+Examples/Stereo/stereo_realsense_D435i
+
+# RGB-D
+Examples/RGB-D/rgbd_tum
+Examples/RGB-D/rgbd_realsense_D435i
+
+# Inertial variants
+Examples/Monocular-Inertial/mono_inertial_*
+Examples/Stereo-Inertial/stereo_inertial_*
+Examples/RGB-D-Inertial/rgbd_inertial_*
+
+# Benchmark binaries
+Examples/benchmark_cpu_baseline
+Examples/benchmark_gpu_pipeline
+Examples/validate_cpu_accuracy
+Examples/validate_gpu_accuracy
+
+# Calibration
+Examples/Calibration/recorder_realsense_D435i
+
+# ROS binaries
+Examples/ROS/ORB_SLAM3/Mono
+Examples/ROS/ORB_SLAM3/Mono_Inertial
+Examples/ROS/ORB_SLAM3/MonoAR
+Examples/ROS/ORB_SLAM3/RGBD
+Examples/ROS/ORB_SLAM3/Stereo
+Examples/ROS/ORB_SLAM3/Stereo_Inertial
+Examples/ROS/ORB_SLAM3/CMakeLists.txt.user
+Examples/ROS/ORB_SLAM3/build/
+
+# Tests
+Examples/Tests/viewer_dataset
+Examples/Tests/sophus_test
+
+# ==== Benchmark & Validation Results ====
+Examples/benchmark_results/
+Examples/validation_results/
+video_benchmark/
+
+# ==== Trajectory outputs ====
+KeyFrameTrajectory.txt
+CameraTrajectory.txt
+kf_*.txt
+f_*.txt
+
+# ==== Statistics & Logs ====
+ExecMean.txt
+SessionInfo.txt
+Results_Euroc.txt
+LBA_Stats.txt
+LocalMapTimeStats.txt
+TrackLocalMapStats.txt
+TrackingTimeStats.txt
+time*
+Time*
+Table_Euroc
+Table_TUMVI_rooms/
+*/ExecMean.txt
+*.log
+
+# ==== IDE & Editor ====
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ==== Python ====
+*.pyc
+__pycache__/
+*.pyo
+
+# ==== Miscellaneous ====
+*.osa
+my_settings.txt
+borrar/*
+*.pdf
+note.md
